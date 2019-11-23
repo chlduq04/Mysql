@@ -17,6 +17,9 @@ initialSize :	최초로 getConnection() Method를 통해 커넥션 풀에 채워
 WAS의 Thread도 DB의 Thread와 비례가 되어야 제 성능을 끌어낼 수 있다.
 
 
+[Spring Mybatis Transaction]
+https://goddaehee.tistory.com/167
+
 
 
 
