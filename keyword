@@ -1,4 +1,4 @@
-[table lock]
+[Table Lock]
 1. Table-Level Locking
   mysql> LOCK TABLES tb_stock READ; 
   ... 
@@ -17,6 +17,33 @@
   mysql> UPDATE tb_stock SET quantity=quantity-1 WHERE quantity-1 >= 0 AND id = 1;
 
 
+[Storage Engine]
+1. MyISAM
+MySQL의 기본 스토리지 엔지으로 데이터 저장에 실제적인 제한이 없고 매우 효율적으로 저장.
+Full-Text 인덱스를 지원하며 특정 인덱스에 대해 메모리 캐쉬를 지원.
+트랜잭션은 미지원/ 테이블 레벨의 락을 지원 잦은 변경및 삭제에는 좋은 성능이 나오지 못하나 데드락 발생은 예방가능.
+데이블작업시 특정행을 수정하려고 하면 테이블 전체에 락.
+
+2. InnoDB
+ACID 트랜잭션을 지원하며, MyISAM보다 데이터 저장비율이 낮고, 데이터 로드 속도가 느림. 
+특정 데이터와 인덱스에 대해서 메모리 캐쉬를 지원하며 외부키를 지원. 
+데이터 압축이 불가능하고 자동 에러 복구 기능.
+테이블 레벨이 아닌 ROW 레벨의 락을 지원한다.
+주로 데이터 입력 및 수정이 빈번한 높은 퍼포먼스를 요구하는 대용량 사이트에서 적합
+
+3. Cluster (NDB)
+트랜잭션을 지원하고 모든 데이터와 인덱스가 메모리에 존재하여 매우 빠른 데이터 로드 속도를 자랑하며 
+PK 사용시 최상의 속도를 나타냄
+? session, redis와 비교
+
+4. Archive
+MySQL 5.0부터 새롭게 도입된 엔진으로 자동적으로 데이터 압축을 지원하며 다른 엔진에 비해 80% 저장공간 절약 효과를 자랑. 
+가장 빠른 데이터 로드 속도 또한 자랑하지만, INSERT와 SELECT만이 가능.
+
+5. Federated
+MySQL 5.0부터 새롭게 도입된 엔진으로 물리적 데이터베이스에 대한 논리적 데이터베이스를 생성하여 원격 데이터를 컨트롤 가능.
+실행속도는 네트워크 요소에 따라 좌우되며 테이블 정의를 통한 SSL 보안 처리. 
+분산 데이터베이스 환경에 사용.
 
 
 
@@ -48,4 +75,5 @@
 
 
 [출처]
-출처: https://offbyone.tistory.com/225 [쉬고 싶은 개발자]
+https://offbyone.tistory.com/225 [쉬고 싶은 개발자]
+https://skibis.tistory.com/18 [Skibi's Notepad]
