@@ -1,0 +1,50 @@
+back_log
+갑자기 많은 커넥션 요청에 대한 listen queue 사이즈
+OS의 backlog의 갯수에 따르는데 
+1. kernel backlog : 시스템 전체에 대한 backlog 를 제한한다. (tcp_max_syn_backlog)
+2. socket backlog : socket (port) 당 backlog를 제한한다. (somaxconn)
+중에서 2번에 따른다.
+
+connect_timeout
+커넥션의 데이터를 기다리는 시간
+
+join_buffer
+(인덱스를 사용하지 않는 조인의) full-join에서 사용하는 버퍼의 크기. 버퍼는 두 테이블 사
+이에서 각 full-join마다 한번 할당이 된다. 인덱싱을 추가하지 못할 때 조인 버퍼를 증가시
+키면 full join의 속도를 향상시킬 수 있다. (일반적으로 빠르게 조인을 하는 가장 좋은 방법
+은인덱스를 추가하는 것이다)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[출처]
+[MySQL Parameters] back_log|작성자 asdf
+https://epthffh.tistory.com/entry/Mysql-성능개선-팁 [물고기 개발자의 블로그]
